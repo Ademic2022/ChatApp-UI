@@ -88,11 +88,46 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    document.getElementById('backButton').addEventListener('click', () => {
-        contentAside.classList.toggle('hide');
-        newGroupBlock.classList.add('hide');
-        editGroupBlock.classList.add('hide');
-    });
+    const backButton = document.querySelectorAll('#backButton')
+    backButton.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const dataAttribute = e.currentTarget.getAttribute('data-icon')
+            if (dataAttribute === 'arrow'){
+                contentAside.classList.toggle('hide');
+                newGroupBlock.classList.add('hide');
+                editGroupBlock.classList.add('hide');
+            }else if(dataAttribute === 'times'){
+                const hideContent = document.querySelectorAll('.hideContent')
+                // every time the back button is clicked, hide all element with class hideContent
+                hideContent.forEach((e)=>{
+                    e.classList.add('hide')
+                })
+            }
+        })
+    })
+
+    const chatRoomOptionBtnLogic = ()=>{
+        const chatRoomOptionBtn = document.querySelectorAll('.chat-room-option-btn')
+        chatRoomOptionBtn.forEach((button)=>{
+            button.addEventListener('click', (e)=>{
+                e.preventDefault()
+                const dataAttributeVal = e.currentTarget.getAttribute('data-btn_type');
+                const availableAttributes = ['editRoom','roomInfo','clearChats','deleteChats','reportUser','block']
+                const rightBar = document.getElementById('rightBar')
+                if (dataAttributeVal === availableAttributes[0]){
+                    const editRoomContent = document.getElementById('editRoomContent')
+                    rightBar.classList.toggle('hide')
+                    editRoomContent.classList.remove('hide')
+                }
+                else if (dataAttributeVal === availableAttributes[1]){
+                    const roomInfo = document.getElementById('roomInfo')
+                    roomInfo.classList.remove('hide')
+                    rightBar.classList.toggle('hide')
+                }
+            })
+        })
+    }
+    chatRoomOptionBtnLogic()
 });
 
 

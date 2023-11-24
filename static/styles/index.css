@@ -266,9 +266,7 @@ aside{
     cursor: pointer;
 }
 
-.hide{
-    display: none;
-}
+
 .search-contents textarea{
     outline: none;
     resize: none;
@@ -464,4 +462,23 @@ textarea::-webkit-scrollbar{
 .datetime{
     padding-top: 2px;
     text-align: center;
+}
+
+
+/* &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& MAIN CONTENT ASIDE WRAPPER &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+.main-content-aside-wrapper{
+    position: relative;
+    background-color: var(--color-select);
+    margin-left: 40%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999;
+}
+
+
+.hide{
+    display: none;
 }
